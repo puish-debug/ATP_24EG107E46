@@ -1,0 +1,30 @@
+GET http://localhost:3000/product
+
+###
+GET http://localhost:3000/product/1
+
+
+###
+POST http://localhost:3000/product
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"rice",
+    "brand":"karnool",
+    "price":650
+}
+
+###
+PUT http://localhost:3000/product
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"ghee",
+    "brand":"cow brand",
+    "price":750
+}
+
+###
+DELETE http://localhost:3000/product/1

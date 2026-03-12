@@ -1,0 +1,78 @@
+###
+GET http://localhost:4000/user-api/users
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlB1aXNoQGVtYWlsIiwiaWF0IjoxNzcyODc4NTMwLCJleHAiOjE3NzI4ODIxMzB9._sC3U8VvEGE6OuIMyh0aDoV-mA4aA8kueo_bOaEggOg; Path=/; HttpOnly; SameSite=Lax
+
+###
+GET http://localhost:4000/user-api/user
+
+###
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "username":"Karth",
+    "password":"Karthik",
+    "email":"Karthik@email",
+    "age":65
+}
+
+###
+PUT http://localhost:4000/user-api/users/69aa9714c5be5daf5ef8bbdc
+Content-Type: application/json
+
+{
+    "username":"Pu",
+    "password":"Puish",
+    "email":"Puish@email",   
+    "age":75
+}
+
+### User login
+POST http://localhost:4000/user-api/auth
+Content-Type: application/json
+
+{
+    "email":"Karthik@email",
+    "password":"Karthik"
+}
+
+###
+DELETE http://localhost:4000/user-api/users/69aa89a05149fae1e0697a17
+
+### add product to user cart
+PUT http://localhost:4000/user-api/cart/product-id/69b249269ba98eab88b7e32a
+
+
+
+###Product requests
+
+GET http://localhost:4000/product-api/product
+
+###
+GET http://localhost:4000/product-api/product/2
+
+
+###
+POST http://localhost:4000/product-api/product
+Content-Type: application/json
+
+{
+    "productId":5,
+    "productName":"atta",
+    "price":45000,
+    "brand":"Ashirvad"
+}
+
+###
+PUT http://localhost:4000/product-api/product/1
+Content-Type: application/json
+
+{
+    "productId":1,
+    "productName":"salt",
+    "price":22750,
+    "brand":"tata"
+}
+
+###
+DELETE http://localhost:4000/product-api/product/2 

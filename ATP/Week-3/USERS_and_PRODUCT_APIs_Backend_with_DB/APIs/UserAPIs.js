@@ -59,8 +59,6 @@ userApp.post("/users",async(req,res)=>{
 
 //read all users(protected route)
 userApp.get("/users",verifyToken,async(req,res)=>{
-    //
-    let userobj
     //read all users from db
     let userlist=await UserModel.find();
     //send res
@@ -117,36 +115,12 @@ userApp.delete("/users/:id",verifyToken,async(req,res)=>{
 
 
 //add product to the cart
-// userApp.put("/cart/product-id/:pid",verifyToken,async(req,res)=>{
-//     //
-//     let productId=req.params.pid;
-//     //
-//     const emailOfUser=req.user?.email;
-//     //add product to the cart
-//     let result=await UserModel.findOneAndUpdate({email:emailOfUser},{$push:{cart:{product:productId}}})
-//     //
-//     if(!result){
-//         return res.status(404).json({message:"User not found"})
-//     }
-//     res.status(200).json({message:"product add to cart"})
-// })
-
-
-//copy add product to the cart
 userApp.put("/cart/product-id/:pid",verifyToken,async(req,res)=>{
     //
     let productId=req.params.pid;
     //
     const emailOfUser=req.user?.email;
     //add product to the cart
-
-    //Before add,first it should check that product is already in the cart
-    let UserFound=await UserModel.findOne({email:emailOfUser})
-    let productFound=UserFound.findOneAndUpdate({"cart.product":productId},{$set:{count:2}})
-    //if the product is there, then increment count by 1
-    //Otherwise add that product to the cart
-
-
     let result=await UserModel.findOneAndUpdate({email:emailOfUser},{$push:{cart:{product:productId}}})
     //
     if(!result){
@@ -154,5 +128,29 @@ userApp.put("/cart/product-id/:pid",verifyToken,async(req,res)=>{
     }
     res.status(200).json({message:"product add to cart"})
 })
+
+
+// //copy add product to the cart
+// userApp.put("/cart/product-id/:pid",verifyToken,async(req,res)=>{
+//     //
+//     let productId=req.params.pid;
+//     //
+//     const emailOfUser=req.user?.email;
+//     //add product to the cart
+
+//     //Before add,first it should check that product is already in the cart
+//     let UserFound=await UserModel.findOne({email:emailOfUser})
+//     let productFound=UserFound.findOneAndUpdate({"cart.product":productId},{$set:{count:2}})
+//     //if the product is there, then increment count by 1
+//     //Otherwise add that product to the cart
+
+
+//     let result=await UserModel.findOneAndUpdate({email:emailOfUser},{$push:{cart:{product:productId}}})
+//     //
+//     if(!result){
+//         return res.status(404).json({message:"User not found"})
+//     }
+//     res.status(200).json({message:"product add to cart"})
+// })
 
 

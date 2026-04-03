@@ -1,0 +1,31 @@
+###Employee requests
+POST http://localhost:4000/employee-api/employee
+Content-Type: application/json
+
+{
+    "employeeId":1,
+    "name":"Puish",
+    "email":"puish@email.com",
+    "mobile":1234567892,
+    "designation":"manager",
+    "companyname":"Balaji Industries"
+}
+
+###get all employee
+GET http://localhost:4000/employee-api/employee
+
+###update employee
+PUT http://localhost:4000/employee-api/employee/1
+Content-Type: application/json
+
+{
+    "employeeId":1,
+    "name":"Puish",
+    "email":"puish@email.com",
+    "mobile":2987654321,
+    "designation":"manager",
+    "companyname":"Balaji Industries"
+}
+
+###delete employee
+DELETE  http://localhost:4000/employee-api/employee/1
